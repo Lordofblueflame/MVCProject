@@ -1,0 +1,79 @@
+﻿@using Microsoft.CodeAnalysis.VisualBasic.Syntax
+@using System.Linq
+@model IEnumerable<ToDoTask>
+
+<div class="row">
+    <div class="col-md-10 offset-1" style="display: flex; justify-content: space-around">
+        <div>
+            <table class="table">
+                <thead>
+                <tr class="text-center">
+                    <th><b><h1>To do</h1></b></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Where(t=>t.Category == Category.ToDo))
+                {<tr>
+                     <td class="align-middle">
+                         @item.Title
+                         <a class="text-white float-right" asp-action="Update" asp-route-id="@item.Id">
+                                                                                              <i class="bi bi-pencil-square text-black"></i>Edit
+                                                                                          </a>
+                                              
+                     </td>
+                 </tr>
+                    
+                }
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                <tr class="text-center">
+                    <th><b><h1>In progres</h1></b></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Where(t=>t.Category == Category.Inprogres))
+                {<tr>
+                     <td class="align-middle">
+                         @item.Title
+                         <a class="text-white float-right" style="margin-right: 5px;" asp-action="Update" asp-route-id="@item.Id">
+                                                                                              <i class="bi bi-pencil-square text-black"></i>Edit
+                                                                                          </a>
+                                            
+                     </td>
+                 </tr>
+                    
+                }
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                <tr class="text-center">
+                    <th><b><h1>Done</h1></b></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Where(t=>t.Category == Category.Done))
+                {<tr>
+                     <td class="align-middle">
+                         @item.Title
+                         <a class="text-white float-right" asp-action="Update" asp-route-id="@item.Id">
+                                                                     <i class="bi bi-pencil-square text-black" ></i>Edit
+                                                                 </a>
+                     </td>
+                 </tr>
+                    
+                }
+                </tbody>
+            </table>
+            
+        </div>
+        
+
+    </div>
+</div>

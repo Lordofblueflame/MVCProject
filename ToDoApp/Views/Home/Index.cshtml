@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Server.Kestrel.Core
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><b>Hello to To Do App</b></h1>
+    
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h2>
+            Add some tasks
+        </h2> 
+    }
+    else
+    {
+        <h2>Log in to start using this to do list</h2>
+    }
+
+        
+    
+    <img src="https://nikafiguringitout.files.wordpress.com/2019/10/6-things-to-do-list.png" alt="">
+</div>
